@@ -1,6 +1,7 @@
 package com.cares.s1.start;
 
 import com.cares.s1.department.DepartmentDAO;
+import com.cares.s1.department.DepartmentDTO;
 import com.cares.s1.department.DepartmentView;
 import com.cares.s1.location.LocationDAO;
 import com.cares.s1.location.LocationView;
@@ -11,13 +12,13 @@ public class StartMain {
 		System.out.println("DB 연동 테스트 시작");
 		
 		DepartmentDAO departmentDAO = new DepartmentDAO();
-		DepartmentView departmentView = new DepartmentView();
-		LocationDAO locationDAO = new LocationDAO();
-		LocationView locationView = new LocationView();
+
+
 		
 		try {
-			departmentView.view(departmentDAO.getList());
-			locationView.view(locationDAO.getList());
+			DepartmentDTO departmentDTO = departmentDAO.getOne(60);
+			
+			System.out.println(departmentDTO.getDepartment_name());
 			
 		} catch (Exception e) {
 			e.printStackTrace();

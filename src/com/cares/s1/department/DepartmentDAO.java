@@ -16,12 +16,58 @@ public class DepartmentDAO {
 		dbConnector = new DBConnector();
 	}
 	
+	// 부서번호로 조회
+	public DepartmentDTO getOne(Integer department_id) throws Exception {
+		// 1. DB로그인
+		Connection con = dbConnector.getConnect();
+		
+		// 2. SQL Query문 작성
+		// 부서 테이블에서 부서번호로 조회 
+		// SELECT * FROM DEPARTMENTS WHERE DEPARTMENT_ID = 어떤 번호 
+		// -> 어떤 번호란 변하는 값 -> 변수
+		String sql = "SELECT * FROM DEPARTMENTS WHERE DEPARTMENT_ID = ? ";
+		// 3. Query문 미리 전송시켜서 DB가 준비
+		PreparedStatement st = con.prepareStatement(sql);
+		// 4. ?값 세팅, 없으면 통과
+		// st.set집어넣으려는데이터타입(int index, 값)
+		// index는 ?의 순서번호
+		// oracle은 인덱스가 1번부터 시작함!!
+		// 만약 조건문이 2개 이상이라 ?가 2개 이상이라면 인덱스가 늘어나는 것임
+		// 쿼리에 쓰여져있는 순서대로 맨왼쪽부터 1번 시작
+		st.setInt(1, department_id);
+		
+		// 5. Query문 최종 전송 후 결과 처리  최종전송하는 이유가 ? 때문이었음
+		ResultSet rs = st.executeQuery();
+		
+		// 부서번호는 데이터의 특성상 맞으면 1개를 가져오게 되고 
+		// 부서번호가 없는 번호를 입력하면 하나도 안가져옴
+		DepartmentDTO departmentDTO = null; // 데이터가 있으면 객체를 만들꺼니까 여기서는 null
+		if(rs.next()) {
+			// 데이터가 있을 때			
+			departmentDTO = new DepartmentDTO();
+			departmentDTO.setDepartment_id(rs.getInt("department_id"));
+			departmentDTO.setDepartment_name(rs.getString("department_name"));
+			departmentDTO.setLocation_id(rs.getInt("location_id"));
+			departmentDTO.setManager_id(rs.getInt("manager_id"));
+		}
+		
+		// 6. 자원 해제
+		rs.close();
+		st.close();
+		con.close();
+		
+		
+		return departmentDTO;
+	}
+	
+	
+	
 	public List<DepartmentDTO> getList() throws Exception {
 		// SELECT * FROM DEPARTMENTS;
 		// 1. DB 로그인
 		Connection con = dbConnector.getConnect();
 		
-		// 2. SQL Query 문 작성
+		// 2. SQL Query문 작성
 		// Java에서는 Query문 ; 제외, 알아서 Java에서 넣어줌
 		String sql = "SELECT * FROM DEPARTMENTS";
 		
