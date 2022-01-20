@@ -2,6 +2,8 @@ package com.cares.s1.start;
 
 import com.cares.s1.department.DepartmentDAO;
 import com.cares.s1.department.DepartmentView;
+import com.cares.s1.location.LocationDAO;
+import com.cares.s1.location.LocationView;
 
 public class StartMain {
 
@@ -10,9 +12,13 @@ public class StartMain {
 		
 		DepartmentDAO departmentDAO = new DepartmentDAO();
 		DepartmentView departmentView = new DepartmentView();
+		LocationDAO locationDAO = new LocationDAO();
+		LocationView locationView = new LocationView();
 		
 		try {
 			departmentView.view(departmentDAO.getList());
+			locationView.view(locationDAO.getList());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		

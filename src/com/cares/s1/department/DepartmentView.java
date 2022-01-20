@@ -8,11 +8,11 @@ public class DepartmentView {
 		// 모두 출력
 		
 		for(int i=0;i<arr.size();i++) {			
-			System.out.println("DEPARTMENT_ID : " + arr.get(i).getDepartment_id());
-			System.out.println("DEPARTMENT_NAME : " + arr.get(i).getDepartment_name());
-			System.out.println("MANAGER_ID : " + arr.get(i).getManager_id());
-			System.out.println("LOCATION_ID : " + arr.get(i).getLocation_id());
-			System.out.println("=========================");
+			System.out.print(arr.get(i).getDepartment_id()+ "\t");
+			System.out.print(arr.get(i).getDepartment_name() + "\t");
+			System.out.print(arr.get(i).getManager_id() + "\t");
+			System.out.println(arr.get(i).getLocation_id());
+			System.out.println("===============================================================================");
 		}
 		
 	}
