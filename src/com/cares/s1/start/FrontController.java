@@ -3,18 +3,19 @@ package com.cares.s1.start;
 import java.util.Scanner;
 
 import com.cares.s1.department.DepartmentController;
+import com.cares.s1.location.LocationController;
 
 public class FrontController {
 
 	private Scanner sc;
 	private DepartmentController departmentController;
-	// LocationController
+	private LocationController locationController;
 	// EmployeeController
 	
 	public FrontController() {
 		sc = new Scanner(System.in);
 		departmentController = new DepartmentController();
-		// LocationController
+		locationController = new LocationController();
 		// EmployeeController
 	}
 	
@@ -36,7 +37,7 @@ public class FrontController {
 				departmentController.start();
 				break;
 			case 3:
-				// locationController의 start 메서드 호출
+				locationController.start();
 				break;
 			default :
 				flag = false;

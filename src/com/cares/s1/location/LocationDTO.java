@@ -2,18 +2,18 @@ package com.cares.s1.location;
 
 public class LocationDTO {
 
-	private Integer locaition_id;
+	private Integer location_id;
 	private String street_address;
 	private String postal_code;
 	private String city;
 	private String state_province;
 	private String country_id;
 
-	public Integer getLocaition_id() {
-		return locaition_id;
+	public Integer getLocation_id() {
+		return location_id;
 	}
-	public void setLocaition_id(Integer locaition_id) {
-		this.locaition_id = locaition_id;
+	public void setLocation_id(Integer locaition_id) {
+		this.location_id = locaition_id;
 	}
 	public String getStreet_address() {
 		return street_address;
