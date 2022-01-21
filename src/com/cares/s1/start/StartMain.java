@@ -1,5 +1,6 @@
 package com.cares.s1.start;
 
+import com.cares.s1.department.DepartmentController;
 import com.cares.s1.department.DepartmentDAO;
 import com.cares.s1.department.DepartmentDTO;
 import com.cares.s1.department.DepartmentView;
@@ -12,14 +13,11 @@ public class StartMain {
 		System.out.println("DB 연동 테스트 시작");
 		
 		DepartmentDAO departmentDAO = new DepartmentDAO();
-
+		DepartmentController departmentController = new DepartmentController();
 
 		
 		try {
-			DepartmentDTO departmentDTO = departmentDAO.getOne(60);
-			
-			System.out.println(departmentDTO.getDepartment_name());
-			
+			departmentController.start();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		

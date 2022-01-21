@@ -17,7 +17,7 @@ public class DepartmentDAO {
 	}
 	
 	// 부서번호로 조회
-	public DepartmentDTO getOne(Integer department_id) throws Exception {
+	public DepartmentDTO getOne(DepartmentDTO dep) throws Exception {
 		// 1. DB로그인
 		Connection con = dbConnector.getConnect();
 		
@@ -34,7 +34,7 @@ public class DepartmentDAO {
 		// oracle은 인덱스가 1번부터 시작함!!
 		// 만약 조건문이 2개 이상이라 ?가 2개 이상이라면 인덱스가 늘어나는 것임
 		// 쿼리에 쓰여져있는 순서대로 맨왼쪽부터 1번 시작
-		st.setInt(1, department_id);
+		st.setInt(1, dep.getDepartment_id());
 		
 		// 5. Query문 최종 전송 후 결과 처리  최종전송하는 이유가 ? 때문이었음
 		ResultSet rs = st.executeQuery();
