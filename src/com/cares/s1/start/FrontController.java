@@ -3,6 +3,7 @@ package com.cares.s1.start;
 import java.util.Scanner;
 
 import com.cares.s1.department.DepartmentController;
+import com.cares.s1.employee.EmployeeController;
 import com.cares.s1.location.LocationController;
 
 public class FrontController {
@@ -10,13 +11,13 @@ public class FrontController {
 	private Scanner sc;
 	private DepartmentController departmentController;
 	private LocationController locationController;
-	// EmployeeController
+	private EmployeeController employeeController;
 	
 	public FrontController() {
 		sc = new Scanner(System.in);
 		departmentController = new DepartmentController();
 		locationController = new LocationController();
-		// EmployeeController
+		employeeController = new EmployeeController();
 	}
 	
 	public void mainStart() throws Exception {
@@ -31,7 +32,7 @@ public class FrontController {
 			
 			switch (select) {
 			case 1:
-				// employeeController의 start 메서드 호출
+				employeeController.start();
 				break;
 			case 2:
 				departmentController.start();
