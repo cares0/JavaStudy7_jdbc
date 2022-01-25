@@ -15,6 +15,27 @@ public class RegionDAO {
 	}
 	
 	
+	// 대륙정보 수정, name 수정
+	public int setUpdate(RegionDTO regionDTO) throws Exception {
+		Connection con = dbConnector.getConnect();
+		String sql = "UPDATE REGIONS SET REGION_NAME = ? WHERE REGION_ID = ? ";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, regionDTO.getRegion_name());
+		st.setLong(2, regionDTO.getRegion_id());
+		
+		int result = st.executeUpdate();
+		
+		st.close();
+		con.close();
+		
+		return result;
+		
+	}
+	
+	
+	
+	// 대륙정보 삭제
 	public int setDelete(RegionDTO regionDTO) throws Exception {
 		Connection con = dbConnector.getConnect();
 		String sql = "DELETE REGIONS WHERE REGION_ID = ?";
