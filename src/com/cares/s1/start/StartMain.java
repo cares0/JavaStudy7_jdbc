@@ -1,5 +1,7 @@
 package com.cares.s1.start;
 
+import com.cares.s1.region.RegionDAO;
+import com.cares.s1.region.RegionDTO;
 
 public class StartMain {
 
@@ -10,7 +12,19 @@ public class StartMain {
 
 		
 		try {
-			frontController.mainStart();
+			//frontController.mainStart();
+			RegionDAO regionDAO = new RegionDAO();
+			RegionDTO regionDTO = new RegionDTO();
+			regionDTO.setRegion_id(6L);
+			regionDTO.setRegion_name("South Pole");
+			int result = regionDAO.setInsert(regionDTO);
+			
+			if(result > 0) {
+				System.out.println("추가 성공");
+			} else {
+				System.out.println("실패");
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
