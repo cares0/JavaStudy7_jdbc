@@ -17,10 +17,10 @@ public class StartMain {
 			RegionDTO regionDTO = new RegionDTO();
 			regionDTO.setRegion_id(6L);
 			regionDTO.setRegion_name("South Pole");
-			int result = regionDAO.setInsert(regionDTO);
+			int result = regionDAO.setDelete(regionDTO);
 			
 			if(result > 0) {
-				System.out.println("추가 성공");
+				System.out.println("삭제 성공");
 			} else {
 				System.out.println("실패");
 			}

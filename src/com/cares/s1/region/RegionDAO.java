@@ -14,6 +14,23 @@ public class RegionDAO {
 		dbConnector = new DBConnector();
 	}
 	
+	
+	public int setDelete(RegionDTO regionDTO) throws Exception {
+		Connection con = dbConnector.getConnect();
+		String sql = "DELETE REGIONS WHERE REGION_ID = ?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setLong(1, regionDTO.getRegion_id());
+		
+		int result = st.executeUpdate();
+		
+		st.close();
+		con.close();
+		return result;
+				
+	}
+	
+	
 	// 대륙정보 추가
 	public int setInsert(RegionDTO regionDTO) throws Exception {
 		Connection con = dbConnector.getConnect();
@@ -30,7 +47,6 @@ public class RegionDAO {
 		// INSERT 문의 결과문은 성공한 숫자를 줌 (여기서는 몇 행이 삽입되었는지)
 		int result = st.executeUpdate();
 		// 그래서 int형으로 결과를 받아주는 것!
-		
 		
 		st.close();
 		con.close();
